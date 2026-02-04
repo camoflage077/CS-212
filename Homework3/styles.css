@@ -1,0 +1,132 @@
+
+.grid-container2 {
+  display: grid;
+  grid-template-areas:
+    'title1 title2'
+    'project1 project2';
+    
+
+    grid-template-columns:  200px 1fr 1fr;
+    grid-template-rows: 100px 1fr 1fr;
+
+    gap: 10px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header header header header header header'
+    'left main main main main main'
+    'footer footer footer footer footer footer';
+
+    grid-template-columns:  200px 1fr 1fr;
+    grid-template-rows: 100px 1fr 1fr;
+
+    gap: 10px;
+}
+
+.title1 {
+    grid-area: title1;
+    border: 2px solid black;
+    width: 200px;
+    text-align: center;
+}
+
+.title2 {
+    grid-area: title2;
+    border: 2px solid black;
+    width: 200px;
+    text-align: center;
+}
+
+.project1 {
+    grid-area: project1;
+    border: 2px solid black;
+    width : 200x;
+}
+
+.project2 {
+    grid-area: project2;
+    border: 2px solid black;
+    width: 200px;
+}
+
+
+h1 { 
+    grid-area: header; 
+    background-color: Pink; 
+    font-size: 30px;
+    text-align: center;
+    }
+h2    { 
+    grid-area: left;   
+     background-color: green; 
+}
+.main-content   { 
+    grid-area: main;   
+    background-color: coral;
+ }
+footer { 
+    grid-area: footer; 
+    background-color: blueviolet; 
+    text-align: center;
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#summary {
+    font-family: "Comic Sans MS", "Comic Sans",  cursive, sans-serif;
+    font-size: 100px;
+}
+
+.education {
+    background-color: black;
+    color: #FFDE21;
+    align-content: center;
+    width: 200px;
+}
+
+.skills1 {
+    border: 2px solid black;
+    margin: 200px;
+}
+
+.skills2 {
+    border: 2px solid black;
+    padding: 200px
+}
+
+.skills3 {
+    border: 2px solid black;
+    padding: 20px;
+    margin: 20px;
+    display: inline-block;
+}
+
+.flexbot {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: left;
+}
+
+.projects {
+    background-color: red;
+}
+
+.email {
+    text-align: right;
+}
+
+.number {
+    text-align: right;
+    text-align: bottom;
+}
+
+.resume {
+    background-color: red;
+    padding: 20px;
+}
