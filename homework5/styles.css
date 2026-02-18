@@ -1,0 +1,211 @@
+
+.grid-container2 {
+  display: grid;
+  grid-template-areas:
+    'title1 title2'
+    'project1 project2';
+    
+
+    grid-template-columns:  200px 1fr 1fr;
+    grid-template-rows: 100px 1fr 1fr;
+
+    gap: 10px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header header header header header header'
+    'left main main main main main'
+    'footer footer footer footer footer footer';
+
+    grid-template-columns:  200px 1fr 1fr;
+    grid-template-rows: 100px 1fr 1fr;
+
+    gap: 10px;
+}
+
+.title1 {
+    grid-area: title1;
+    border: 2px solid black;
+    width: 200px;
+    text-align: center;
+}
+
+.title2 {
+    grid-area: title2;
+    border: 2px solid black;
+    width: 200px;
+    text-align: center;
+}
+
+.project1 {
+    grid-area: project1;
+    border: 2px solid black;
+    width : 200x;
+}
+
+.project2 {
+    grid-area: project2;
+    border: 2px solid black;
+    width: 200px;
+}
+
+
+h1 { 
+    grid-area: header; 
+    background-color: Pink; 
+    font-size: 30px;
+    text-align: center;
+    }
+
+    
+h2    { 
+    grid-area: left;   
+     background-color: green; 
+}
+.main-content   { 
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    grid-area: main;   
+    background-color: coral;
+    padding: 40px;
+    gap: 20px;
+    flex-grow: 1;
+    flex-shrink: 1;
+ }
+footer { 
+    grid-area: footer; 
+    background-color: blueviolet; 
+    text-align: center;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.skills {
+    flex-grow: 1;
+    text-align: center;
+    transition: 
+        transform 0.3s ease,
+        background-color 0.3s ease,
+        box-shadow 0.3s ease,
+        border-radius 0.3s ease;
+}
+
+
+
+#summary {
+    font-family: "Comic Sans MS", "Comic Sans",  cursive, sans-serif;
+    font-size: 100px;
+}
+
+.education {
+    background-color: black;
+    color: #FFDE21;
+    align-content: center;
+    width: 200px;
+}
+
+.skills1 {
+    border: 2px solid black;
+    margin: 200px;
+}
+
+.skills2 {
+    border: 2px solid black;
+    padding: 200px
+}
+
+.skills3 {
+    border: 2px solid black;
+    padding: 20px;
+    margin: 20px;
+    display: inline-block;
+}
+
+.flexbot {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+#span {
+    grid-column: span 1;
+}
+
+.projects {
+    background-color: red;
+}
+
+.email {
+    text-align: right;
+}
+
+.number {
+    text-align: right;
+    text-align: bottom;
+}
+
+
+
+@media (min-width: 768px) {
+    body {
+        background-color: yellow;
+    }
+}
+
+body {
+    background-color: black;
+}
+
+
+
+@media (min-width: 1024px) {
+    body {
+        background-color: aqua;
+        font-size: 18px;
+    }
+}
+
+.skills {
+    transition: 
+        transform 0.3s ease,
+        background-color 0.3s ease,
+        box-shadow 0.3s ease,
+        border-radius 0.3s ease;
+}
+
+.skills:hover {
+    transform: scale(1.1) rotate(2deg);
+    background-color: red;
+    box-shadow: black;
+}
+
+.resume {
+    transition: 
+        transform 0.3s ease,
+        background-color 0.3s ease,
+        box-shadow 0.3s ease,
+        border-radius 0.3s ease;    
+}
+
+.resume:hover {
+        transform: scale(1.1) rotate(2deg);
+        background-color: red;
+        box-shadow: black;
+}
+
+
+
+
+
+
+
+
