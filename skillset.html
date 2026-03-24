@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="./styles.css" />
+  <title>Skill Manager</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <style>
+    li { margin: 5px 0; }
+    button { margin-left: 5px; }
+  </style>
+</head>
+<body>
+
+<h2>Skill Manager</h2>
+
+<form id="skillForm">
+  <input type="text" id="skillInput" placeholder="Enter a skill" />
+  <button type="submit">Add Skill</button>
+</form>
+
+<p id="error" style="color:red;"></p>
+
+<h3>Skills List</h3>
+<ul id="skillList"></ul>
+
+<script>
+  let skills = ["HTML", "CSS"];
+
+
+  function validateSkill(skill, callback, index = null) {
+    if (!skill.trim()) {
+      callback(false, "Skill cannot be empty");
+      return;
+    }
+
+    let exists = skills.some((s, i) => s === skill && i !== index);
+
+    if (exists) {
+      callback(false, "Skill already exists");
+    } else {
+      callback(true, "");
+    }
+  }
+
+  
+function updateList() {
+  $("#skillList").empty();
+
+  skills.forEach((skill, index) => {
+
+    let $li = $(`
+      <li style="display:none;">
+        <span class="skill-text" data-index="${index}">${skill}</span>
+        <button class="edit" data-index="${index}">Edit</button>
+        <button class="remove" data-index="${index}">Delete</button>
+      </li>
+    `);
+
+   
+    $("#skillList").append($li);
+    $li.slideDown(300); 
+  });
+}
+
+
+  function addSkill(skill, callback) {
+    skills.push(skill);
+    callback();
+  }
+
+
+  function editSkill(index, newSkill, callback) {
+    skills[index] = newSkill;
+    callback();
+  }
+
+
+  function removeSkill(index, callback) {
+    skills.splice(index, 1);
+    callback();
+  }
+
+
+  $("#skillForm").submit(function(e) {
+    e.preventDefault();
+
+    let skill = $("#skillInput").val();
+
+    validateSkill(skill, function(valid, message) {
+      if (!valid) {
+        $("#error").text(message);
+      } else {
+        $("#error").text("");
+
+        addSkill(skill, function() {
+          updateList();
+          $("#skillInput").val("");
+        });
+      }
+    });
+  });
+
+
+  $("#skillList").on("click", ".remove", function() {
+    let index = $(this).data("index");
+
+    removeSkill(index, function() {
+      updateList();
+    });
+  });
+
+  $("#skillList").on("click", ".edit", function() {
+    let index = $(this).data("index");
+    let currentSkill = skills[index];
+
+    let newSkill = prompt("Edit skill:", currentSkill);
+
+    if (newSkill !== null) {
+      validateSkill(newSkill, function(valid, message) {
+        if (!valid) {
+          alert(message);
+        } else {
+          editSkill(index, newSkill, function() {
+            updateList();
+          });
+        }
+      }, index);
+    }
+  });
+
+
+  $("#skillList").on("click", ".skill-text", function() {
+    let index = $(this).data("index");
+    let currentSkill = skills[index];
+
+    let newSkill = prompt("Edit skill:", currentSkill);
+
+    if (newSkill !== null) {
+      validateSkill(newSkill, function(valid, message) {
+        if (!valid) {
+          alert(message);
+        } else {
+          editSkill(index, newSkill, function() {
+            updateList();
+          });
+        }
+      }, index);
+    }
+  });
+
+function renderSkills() {
+  $('#skillList').empty();
+
+  for (let i = 0; i < skills.length; i++) {
+    $('#skillList').append(`<li>${skills[i]}</li>`);
+  }
+}
+
+
+  $('#skillInput').keydown(function (event) {
+
+  if (event.key === "Enter") {
+    event.preventDefault();
+
+    const skillValue = $('#skillInput').val().trim();
+
+    if (skillValue !== "") {
+      skills.push(skillValue);   
+      renderSkills();           
+      $('#skillInput').val(""); 
+    }
+  }
+
+  if (event.key === "Escape") {
+    clearInputs();
+  }
+  });
+
+  function clearInputs() {
+  $('#skillInput').val("");
+  }
+
+</script>
+
+</body>
+</html>

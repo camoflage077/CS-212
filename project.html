@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="./styles.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+  <h2>Projects List</h2>
+
+  <button id="sortAsc">Sort by Earliest</button>
+  <button id="sortDesc">Sort by Latest</button>
+
+  <div class="container" id="projectContainer"></div>
+
+  <script>
+    const projects = [
+      {
+        title: 'Bike Website',
+        description: 'biuld a bike website to sell bike parts',
+        deadline: new Date("2026-11-10")
+      },
+      {
+        title: 'Calculator app',
+        description: 'biuld a calculator application',
+        deadline: new Date("2026-4-26")
+      },
+      {
+        title: 'Personal website',
+        description: 'biuld a personal website',
+        deadline: new Date("2026-12-18")
+      }
+    ];
+  
+    function renderProjects(projectArray) {
+      $('#projectContainer').empty();
+
+      for (let i = 0; i < projectArray.length; i++) {
+        const project = projectArray[i];
+
+        const card = `
+          <div class="card">
+            <img src="${project.imageURL}" alt="Project Image">
+            <div class="card-body">
+              <div class="card-title">${project.title}</div>
+              <p>${project.description}</p>
+              <div class="card-date">
+                Deadline: ${project.deadline.toDateString()}
+              </div>
+            </div>
+          </div>
+        `;
+
+        $('#projectContainer').append(card);
+      }
+    }
+
+  
+    renderProjects(projects);
+
+
+    $('#sortAsc').click(function () {
+      projects.sort(function (a, b) {
+        return a.deadline - b.deadline;
+      });
+      renderProjects(projects);
+    });
+
+    $('#sortDesc').click(function () {
+      projects.sort(function (a, b) {
+        return b.deadline - a.deadline;
+      });
+      renderProjects(projects);
+    });
+  </script>
+
+</div>
+<script src="app.js"></script>
+</body>
+
+</html>
